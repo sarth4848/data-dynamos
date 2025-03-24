@@ -30,6 +30,35 @@
     .btn-animated:hover {
       transform: scale(1.1);
     }
+    .btn-custom {
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom.bg-cyan-500 {
+      background-color: #06b6d4; /* Tailwind cyan-500 */
+    }
+    .btn-custom.bg-gray-700 {
+      background-color: #374151; /* Tailwind gray-700 */
+    }
+    .btn-custom:hover {
+      background-color: #0ea5e9; /* Tailwind cyan-600 */
+    }
+    #chatbox {
+      display: none; /* Initially hidden */
+      position: fixed;
+      bottom: 4rem;
+      right: 1rem;
+      background-color: #1f2937; /* Gray-800 */
+      color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      width: 300px;
+    }
+    #chatbox-header {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="bg-black text-white">
@@ -49,9 +78,9 @@
     <p class="text-xl md:text-2xl mb-8 text-gray-300">Introducing the next evolution of smart luxury devices.</p>
     <img src="assets/product.png" alt="FuturaX" class="mx-auto w-full max-w-md md:max-w-2xl mb-8" data-aos="fade-up" data-aos-delay="300" />
     <div class="space-x-4" data-aos="fade-up" data-aos-delay="500">
-      <a href="buy.html" class="btn-animated px-6 py-3 bg-cyan-500 rounded-full hover:bg-cyan-600 transition duration-300 ease-in-out">Buy Now</a>
-      <a href="preorder.html" class="btn-animated px-6 py-3 bg-gray-700 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out">Pre-Order</a>
-      <a href="learn.html" class="btn-animated px-6 py-3 bg-gray-700 rounded-full hover:bg-gray-800 transition duration-300 ease-in-out">Learn More</a>
+      <a href="buy.html" class="btn-animated btn-custom bg-cyan-500">Buy Now</a>
+      <a href="preorder.html" class="btn-animated btn-custom bg-gray-700">Pre-Order</a>
+      <a href="learn.html" class="btn-animated btn-custom bg-gray-700">Learn More</a>
     </div>
   </header>
 
@@ -74,10 +103,4 @@
   </section>
 
   <footer class="text-center py-6 border-t border-gray-800 bg-black" data-aos="fade-up">
-    <p class="text-gray-500">&copy; 2025 FuturaX Inc. All rights reserved.</p>
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-</body>
-</html>
+    <p class="text-gray-500">&copy; 2025 FuturaX
