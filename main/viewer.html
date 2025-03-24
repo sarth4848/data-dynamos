@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FuturaX - 360 Viewer</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .viewer-container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .viewer-img {
+      width: 100%;
+      cursor: grab;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <nav class="flex justify-between items-center p-6 bg-gradient-to-r from-black to-gray-900">
+    <h1 class="text-3xl font-bold">FuturaX</h1>
+    <ul class="flex gap-6">
+      <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="features.html" class="hover:text-cyan-400">Features</a></li>
+      <li><a href="viewer.html" class="text-cyan-400">360 Viewer</a></li>
+      <li><a href="customizer.html" class="hover:text-cyan-400">Customizer</a></li>
+      <li><a href="contact.html" class="hover:text-cyan-400">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="text-center py-16" data-aos="fade-up">
+    <h2 class="text-5xl font-bold mb-4">360° Product View</h2>
+    <p class="text-xl mb-10">Drag to rotate and experience FuturaX from every angle.</p>
+
+    <div class="viewer-container" data-aos="zoom-in">
+      <img src="assets/viewer/frame1.png" id="viewerImg" class="viewer-img rounded-xl shadow-xl" alt="360 Viewer">
+    </div>
+  </section>
+
+  <footer class="text-center py-6 border-t border-gray-800">
+    <p>&copy; 2025 FuturaX Inc. All rights reserved.</p>
+  </footer>
+
+  <script>
+    AOS.init();
+
+    const img = document.getElementById('viewerImg');
+    let isDragging = false;
+    let frame = 1;
+    const totalFrames = 36; // you should have frame1.png to frame36.png in /assets/viewer
+
+    img.addEventListener('mousedown', () => isDragging = true);
+    img.addEventListener('mouseup', () => isDragging = false);
+    img.addEventListener('mouseleave', () => isDragging = false);
+
+    img.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const movement = e.movementX;
+      if (movement > 0) {
+        frame = (frame % totalFrames) + 1;
+      } else {
+        frame = (frame - 2 + totalFrames) % totalFrames + 1;
+      }
+      img.src = `assets/viewer/frame${frame}.png`;
+    });
+  </script>
+</body>
+</html>
