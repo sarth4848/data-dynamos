@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Successful | Ramsung Flex</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-950 to-gray-900 text-white min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-gray-800/60 p-8 rounded-xl max-w-3xl w-full text-center shadow-2xl border border-cyan-500">
+    <h1 class="text-4xl font-extrabold text-cyan-400 mb-4">🎉 Order Confirmed!</h1>
+    <p class="text-gray-300 mb-6">Thank you for purchasing the <span class="font-bold text-white">Ramsung Flex 27 Ultra</span>. Your order has been successfully placed.</p>
+    
+    <!-- Invoice Preview -->
+    <div id="invoice" class="bg-gray-900 border border-gray-700 p-6 rounded-xl text-left mb-6">
+      <h2 class="text-2xl font-bold text-cyan-300 mb-2">Invoice</h2>
+      <p><strong>Order ID:</strong> #RAM20250324</p>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Address:</strong> 123 Flex Street, Mumbai, India</p>
+      <p><strong>Model:</strong> 1TB - Flex Gold Limited</p>
+      <p><strong>Price:</strong> ₹1,99,999</p>
+      <p><strong>Date:</strong> 24 March 2025</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <button onclick="window.print()" class="px-6 py-2 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-xl">🖨️ Print Invoice</button>
+      <button onclick="downloadInvoice()" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-black font-bold rounded-xl">⬇️ Download PDF</button>
+    </div>
+
+    <!-- Mock Email Layout -->
+    <div class="bg-gray-700/40 p-6 rounded-lg border border-gray-600 text-left">
+      <h3 class="text-xl font-semibold text-yellow-400 mb-2">📧 Confirmation Email Preview</h3>
+      <p class="text-sm text-gray-300">To: johndoe@email.com</p>
+      <p class="text-sm text-gray-300 mt-2">Subject: Your Ramsung Flex Order #RAM20250324 has been confirmed</p>
+      <div class="mt-4 p-4 bg-gray-800 rounded">
+        <p class="mb-2">Hi John,</p>
+        <p>Thank you for purchasing the <strong>Ramsung Flex 27 Ultra</strong>.</p>
+        <p>Your order <strong>#RAM20250324</strong> has been confirmed and will be shipped shortly.</p>
+        <p class="mt-4">You can find your invoice attached or download it from your Ramsung account.</p>
+        <p class="mt-4">Best,<br/>Team Ramsung</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function downloadInvoice() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(12);
+      doc.text("Ramsung Flex 27 Ultra Invoice", 10, 10);
+      doc.text("Order ID: RAM20250324", 10, 20);
+      doc.text("Name: John Doe", 10, 30);
+      doc.text("Address: 123 Flex Street, Mumbai, India", 10, 40);
+      doc.text("Model: 1TB - Flex Gold Limited", 10, 50);
+      doc.text("Price: ₹1,99,999", 10, 60);
+      doc.text("Date: 24 March 2025", 10, 70);
+      doc.save("ramsung-invoice.pdf");
+    }
+  </script>
+<!-- Return to Home Button at the very bottom -->
+<div class="mt-35 mb-10 text-center">
+  <a href="index.html"
+     class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out">
+    ⬅️ Return to Home
+  </a>
+</div>
+<!-- Back to Top Button -->
+<a href="#top" id="backToTop" class="fixed bottom-6 right-6 bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-110 hover:shadow-xl transition duration-300 ease-in-out z-50">
+  ↑
+</a>
+<style>
+#backToTop {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#backToTop.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+</style>
+<script>
+  // Show/Hide Back to Top button on scroll
+  window.addEventListener('scroll', function() {
+    const backToTopBtn = document.getElementById('backToTop');
+    if (window.scrollY > 200) { // Show button when user scrolls down 200px
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

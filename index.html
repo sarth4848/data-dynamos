@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ramsung Flex 27 Ultra</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+@keyframes logoPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes gradientShift {
+  0% { color: #06b6d4; }
+  50% { color: #a855f7; }
+  100% { color: #06b6d4; }
+}
+
+.animate-logo {
+  animation: logoPulse 3s infinite ease-in-out, gradientShift 5s infinite alternate;
+  transition: transform 0.3s ease-in-out;
+}
+
+.animate-logo:hover {
+  transform: scale(1.15);
+}
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero-btn {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      left: -100%;
+      top: 0;
+      transform: skewX(-30deg);
+      transition: left 0.5s ease;
+    }
+
+    .hero-btn:hover::before {
+      left: 100%;
+    }
+
+    .hero-btn:hover {
+      transform: scale(1.05);
+    }
+
+    #chatbot {
+      transition: all 0.3s ease-in-out;
+    }
+    #chatbot.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+
+    .typing::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center px-8 py-4 backdrop-blur-md bg-black/20">
+    <h1 class="text-2xl font-bold text-cyan-400 animate-logo">Ramsung</h1>
+
+    <ul class="flex space-x-6 text-lg">
+      <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="features.html" class="hover:text-cyan-400">Features</a></li>
+      <li><a href="viewer.html" class="hover:text-cyan-400">360° View</a></li>
+      <li><a href="customizer.html" class="hover:text-cyan-400">Customizer</a></li>
+      <li><a href="contact.html" class="hover:text-cyan-400">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-6" data-aos="fade-up">
+    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text animate-pulse leading-snug">
+  Ramsung Flex 27 Ultra
+</h2>
+
+    <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10" data-aos="fade-up" data-aos-delay="100">A revolution in flexible luxury display technology. Experience power, elegance, and innovation in one sleek foldable device.</p>
+    <img src="2.jpg" alt="Ramsung Flex 27 Ultra" class="mx-auto w-2/3 rounded-xl shadow-lg hover:scale-105 transition-transform duration-500" data-aos="zoom-in" data-aos-delay="200"/>
+
+    <div class="mt-10 flex justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+      <a href="learn.html" class="hero-btn px-8 py-3 bg-gray-800 text-white font-semibold rounded-xl shadow-lg">Learn More</a>
+      <a href="buy.html" class="hero-btn px-8 py-3 bg-cyan-500 text-black font-semibold rounded-xl shadow-lg hover:bg-cyan-600 transition">Buy Now</a>
+    </div>
+  </section>
+
+  <!-- Chatbot -->
+  <div id="chatbot" class="fixed bottom-24 right-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-4 rounded-2xl shadow-2xl max-w-xs w-80 z-50 opacity-0 translate-y-5 pointer-events-none">
+    <div class="flex justify-between items-center mb-2">
+      <h3 class="text-lg font-semibold flex items-center gap-2"><span class="text-cyan-400">🤖 FlexBot</span></h3>
+      <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div class="text-xs text-gray-400 mb-2">Ask about price, specs, features, or anything Ramsung!</div>
+    <textarea id="chatInput" placeholder="Type your question here..." rows="2" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-sm resize-none"></textarea>
+    <button onclick="sendChat()" class="mt-2 w-full bg-cyan-500 hover:bg-cyan-600 transition py-2 rounded text-black font-bold">Send</button>
+    <div id="chatResponse" class="mt-3 text-sm text-cyan-300 min-h-[2rem] bg-gray-800 p-2 rounded"></div>
+  </div>
+  <button id="chatToggle" onclick="toggleChatbot()" class="fixed bottom-5 right-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold p-4 rounded-full shadow-xl z-50 animate-bounce">💬</button>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-gray-800 text-gray-400">
+    &copy; 2025 Ramsung Inc. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+  AOS.init();
+
+  window.onload = function() {
+    setTimeout(() => {
+      toggleChatbot(); // Open chatbot on load
+      typeResponse("Hi! How are you? 😊", "chatResponse");
+    }, 1000);
+  };
+
+  function toggleChatbot() {
+    const bot = document.getElementById('chatbot');
+    bot.classList.toggle('opacity-0');
+    bot.classList.toggle('translate-y-5');
+    bot.classList.toggle('pointer-events-none');
+  }
+
+  function typeResponse(text, targetId) {
+    const el = document.getElementById(targetId);
+    el.textContent = '';
+    el.classList.add('typing');
+    let i = 0;
+    const interval = setInterval(() => {
+      el.textContent = text.substring(0, i);
+      i++;
+      if (i > text.length) {
+        clearInterval(interval);
+        el.classList.remove('typing');
+      }
+    }, 30);
+  }
+
+  function sendChat() {
+    const input = document.getElementById('chatInput').value.toLowerCase();
+    const response = document.getElementById('chatResponse');
+    if (!input.trim()) {
+      typeResponse("Please enter a question!", "chatResponse");
+      return;
+    }
+    if (input.includes("price")) {
+      typeResponse("The Ramsung Flex 27 Ultra starts at ₹1,99,999.", "chatResponse");
+    } else if (input.includes("battery")) {
+      typeResponse("It features a 7000mAh intelligent dual-cell battery.", "chatResponse");
+    } else if (input.includes("buy")) {
+      typeResponse("You can buy it directly from the Buy page or through authorized sellers.", "chatResponse");
+    } else if (input.includes("flexbot")) {
+      typeResponse("I'm FlexBot, your smart AI companion built into the Ramsung Flex 27 Ultra.", "chatResponse");
+    } else if (input.includes("features") || input.includes("specs")) {
+      typeResponse("The device features a foldable 27\" 8K AMOLED, FlexCore X9 processor, AI tools, and more!", "chatResponse");
+    } else {
+      typeResponse("I'm FlexBot 🤖 – here to help with anything about the Ramsung Flex 27 Ultra!", "chatResponse");
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

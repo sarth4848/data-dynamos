@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Ramsung Flex 27 Ultra</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    .fadeInCustom {
+      animation: fadeInUp 1.2s ease-out both;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .popup-animate {
+      animation: popupScale 0.5s ease-in-out both;
+    }
+
+    @keyframes popupScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+
+  <script>
+    function showConfirmation() {
+      const confirmationPopup = document.getElementById('confirmationPopup');
+      confirmationPopup.classList.remove('hidden');
+      confirmationPopup.querySelector('div').classList.add('popup-animate');
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center px-8 py-4 backdrop-blur-md bg-black/20">
+    <h1 class="text-2xl font-bold text-cyan-400">Ramsung</h1>
+    <ul class="flex space-x-6 text-lg">
+      <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="features.html" class="hover:text-cyan-400">Features</a></li>
+      <li><a href="viewer.html" class="hover:text-cyan-400">360° View</a></li>
+      <li><a href="customizer.html" class="hover:text-cyan-400">Customizer</a></li>
+      <li><a href="contact.html" class="text-cyan-400 font-semibold">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="py-20 px-8 max-w-3xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-6 animate__animated animate__fadeInDown">Get in Touch</h2>
+    <p class="text-center text-gray-300 mb-10 animate__animated animate__fadeInUp animate__delay-1s">Have questions or need assistance? Contact our team — we're here to help.</p>
+    
+    <form class="space-y-6" onsubmit="event.preventDefault(); showConfirmation();">
+      <div class="fadeInCustom">
+        <label class="block text-sm mb-1">Name</label>
+        <input type="text" class="w-full p-3 rounded bg-gray-900 border border-gray-700" required />
+      </div>
+      <div class="fadeInCustom">
+        <label class="block text-sm mb-1">Email</label>
+        <input type="email" class="w-full p-3 rounded bg-gray-900 border border-gray-700" required />
+      </div>
+      <div class="fadeInCustom">
+        <label class="block text-sm mb-1">Message</label>
+        <textarea rows="4" class="w-full p-3 rounded bg-gray-900 border border-gray-700" required></textarea>
+      </div>
+      <button type="submit" class="w-full py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded transition duration-300 fadeInCustom">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Popup -->
+  <div id="confirmationPopup" class="fixed inset-0 bg-black/60 flex justify-center items-center hidden z-50">
+    <div class="bg-white p-8 rounded-xl text-center w-96 shadow-2xl">
+      <h3 class="text-2xl font-semibold text-green-600 mb-2">Message Sent Successfully!</h3>
+      <p class="text-gray-700 mb-6">Your message has been sent. Our team will get back to you shortly.</p>
+      <button onclick="document.getElementById('confirmationPopup').classList.add('hidden');" class="py-2 px-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold rounded">Close</button>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-gray-800 text-gray-400">
+    &copy; 2025 Ramsung Inc. All rights reserved.
+  </footer>
+
+<!-- Add this near the bottom of contact.html just before </body> -->
+
+<!-- Chatbot -->
+<div id="chatbot" class="fixed bottom-24 right-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-4 rounded-2xl shadow-2xl max-w-xs w-80 z-50 opacity-0 translate-y-5 pointer-events-none">
+  <div class="flex justify-between items-center mb-2">
+    <h3 class="text-lg font-semibold flex items-center gap-2"><span class="text-cyan-400">🤖 FlexBot</span></h3>
+    <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white">✕</button>
+  </div>
+  <div class="text-xs text-gray-400 mb-2">Ask about price, specs, features, or anything Ramsung!</div>
+  <textarea id="chatInput" placeholder="Type your question here..." rows="2" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-sm resize-none"></textarea>
+  <button onclick="sendChat()" class="mt-2 w-full bg-cyan-500 hover:bg-cyan-600 transition py-2 rounded text-black font-bold">Send</button>
+  <div id="chatResponse" class="mt-3 text-sm text-cyan-300 min-h-[2rem] bg-gray-800 p-2 rounded"></div>
+</div>
+<button id="chatToggle" onclick="toggleChatbot()" class="fixed bottom-5 right-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold p-4 rounded-full shadow-xl z-50 animate-bounce">💬</button>
+
+<!-- Chatbot Script -->
+<script>
+  function toggleChatbot() {
+    const bot = document.getElementById('chatbot');
+    bot.classList.toggle('opacity-0');
+    bot.classList.toggle('translate-y-5');
+    bot.classList.toggle('pointer-events-none');
+  }
+
+  function typeResponse(text, targetId) {
+    const el = document.getElementById(targetId);
+    el.textContent = '';
+    el.classList.add('typing');
+    let i = 0;
+    const interval = setInterval(() => {
+      el.textContent = text.substring(0, i);
+      i++;
+      if (i > text.length) {
+        clearInterval(interval);
+        el.classList.remove('typing');
+      }
+    }, 30);
+  }
+
+  function sendChat() {
+    const input = document.getElementById('chatInput').value.toLowerCase();
+    const response = document.getElementById('chatResponse');
+    if (!input.trim()) {
+      typeResponse("Please enter a question!", "chatResponse");
+      return;
+    }
+    if (input.includes("price")) {
+      typeResponse("The Ramsung Flex 27 Ultra starts at ₹1,99,999.", "chatResponse");
+    } else if (input.includes("battery")) {
+      typeResponse("It features a 7000mAh intelligent dual-cell battery.", "chatResponse");
+    } else if (input.includes("buy")) {
+      typeResponse("You can buy it directly from the Buy page or through authorized sellers.", "chatResponse");
+    } else if (input.includes("flexbot")) {
+      typeResponse("I'm FlexBot, your smart AI companion built into the Ramsung Flex 27 Ultra.", "chatResponse");
+    } else if (input.includes("features") || input.includes("specs")) {
+      typeResponse("The device features a foldable 27\" 8K AMOLED, FlexCore X9 processor, AI tools, and more!", "chatResponse");
+    } else {
+      typeResponse("I'm FlexBot 🤖 – here to help with anything about the Ramsung Flex 27 Ultra!", "chatResponse");
+    }
+  }
+</script>
+
+</body>
+</html>

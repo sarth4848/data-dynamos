@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ramsung Flex 27 Ultra - Features</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <style>
+    #chatbot {
+      transition: all 0.3s ease-in-out;
+    }
+    #chatbot.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    .typing::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white">
+  <!-- Navigation -->
+  <nav class="flex justify-between items-center px-8 py-4 backdrop-blur-md bg-black/20">
+    <h1 class="text-2xl font-bold text-cyan-400">Ramsung</h1>
+    <ul class="flex space-x-6 text-lg">
+      <li><a href="index.html" class="hover:text-cyan-400">Home</a></li>
+      <li><a href="features.html" class="text-cyan-400 font-semibold">Features</a></li>
+      <li><a href="viewer.html" class="hover:text-cyan-400">360° View</a></li>
+      <li><a href="customizer.html" class="hover:text-cyan-400">Customizer</a></li>
+      <li><a href="contact.html" class="hover:text-cyan-400">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Features Section -->
+  <section class="px-8 py-16 max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-purple-500 text-transparent bg-clip-text">Product Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up">
+        <h3 class="text-xl font-semibold mb-2">27" Flexible Display</h3>
+        <p class="text-gray-300">Unfold a world of possibilities with our ultra-clear, flexible AMOLED 27-inch display—designed for immersive productivity and entertainment.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-xl font-semibold mb-2">AI-Powered Experience</h3>
+        <p class="text-gray-300">Integrated AI assistant enhances your usage with intelligent predictions, task automation, and real-time suggestions.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-xl font-semibold mb-2">Zero-Lag Performance</h3>
+        <p class="text-gray-300">Powered by the QuantumCore X7 chip, experience unmatched speed and efficiency for all your tasks.</p>
+      </div>
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-xl font-semibold mb-2">EcoSmart Battery</h3>
+        <p class="text-gray-300">Enjoy up to 3 days of battery life with ultra-fast wireless charging and AI-assisted power saving modes.</p>
+      </div>
+
+      <!-- Quad Camera Feature with Images -->
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-xl font-semibold mb-4">Quad Camera System with 200x Zoom</h3>
+                <p class="text-gray-300">Capture everything from micro to moonshots with 4 ultra-clear rear cameras, featuring a revolutionary 200x space zoom lens for stunning details.</p>
+      </div>
+
+      <!-- Under-Display Selfie Camera with Image -->
+      <div class="bg-gray-900 rounded-xl p-6 shadow-lg" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-xl font-semibold mb-4">Under-Display Selfie Camera</h3>
+        <p class="text-gray-300">Enjoy an uninterrupted display experience with a brilliant AI-optimized selfie camera hidden beneath the screen.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="customizer.html" class="inline-block px-6 py-3 bg-cyan-500 text-black rounded-lg hover:bg-cyan-600 transition font-semibold">Customize Yours</a>
+    </div>
+  </section>
+
+  <!-- Chatbot -->
+  <div id="chatbot" class="fixed bottom-24 right-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-4 rounded-2xl shadow-2xl max-w-xs w-80 z-50 opacity-0 translate-y-5 pointer-events-none">
+    <div class="flex justify-between items-center mb-2">
+      <h3 class="text-lg font-semibold flex items-center gap-2"><span class="text-cyan-400">🤖 FlexBot</span></h3>
+      <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div class="text-xs text-gray-400 mb-2">Ask about price, specs, features, or anything Ramsung!</div>
+    <textarea id="chatInput" placeholder="Type your question here..." rows="2" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-sm resize-none"></textarea>
+    <button onclick="sendChat()" class="mt-2 w-full bg-cyan-500 hover:bg-cyan-600 transition py-2 rounded text-black font-bold">Send</button>
+    <div id="chatResponse" class="mt-3 text-sm text-cyan-300 min-h-[2rem] bg-gray-800 p-2 rounded"></div>
+  </div>
+  <button id="chatToggle" onclick="toggleChatbot()" class="fixed bottom-5 right-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold p-4 rounded-full shadow-xl z-50 animate-bounce">💬</button>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-gray-700 text-gray-400">
+    &copy; 2025 Ramsung Inc. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+    function toggleChatbot() {
+      const bot = document.getElementById('chatbot');
+      bot.classList.toggle('opacity-0');
+      bot.classList.toggle('translate-y-5');
+      bot.classList.toggle('pointer-events-none');
+    }
+
+    function typeResponse(text, targetId) {
+      const el = document.getElementById(targetId);
+      el.textContent = '';
+      el.classList.add('typing');
+      let i = 0;
+      const interval = setInterval(() => {
+        el.textContent = text.substring(0, i);
+        i++;
+        if (i > text.length) {
+          clearInterval(interval);
+          el.classList.remove('typing');
+        }
+      }, 30);
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chatInput').value.toLowerCase();
+      const response = document.getElementById('chatResponse');
+      if (!input.trim()) {
+        typeResponse("Please enter a question!", "chatResponse");
+        return;
+      }
+      if (input.includes("price")) {
+        typeResponse("The Ramsung Flex 27 Ultra starts at ₹1,99,999.", "chatResponse");
+      } else if (input.includes("battery")) {
+        typeResponse("It features a 7000mAh intelligent dual-cell battery.", "chatResponse");
+      } else if (input.includes("buy")) {
+        typeResponse("You can buy it directly from the Buy page or through authorized sellers.", "chatResponse");
+      } else if (input.includes("flexbot")) {
+        typeResponse("I'm FlexBot, your smart AI companion built into the Ramsung Flex 27 Ultra.", "chatResponse");
+      } else if (input.includes("features") || input.includes("specs")) {
+        typeResponse("The device features a foldable 27\" 8K AMOLED, FlexCore X9 processor, AI tools, and more!", "chatResponse");
+      } else {
+        typeResponse("I'm FlexBot 🤖 – here to help with anything about the Ramsung Flex 27 Ultra!", "chatResponse");
+      }
+    }
+  </script>
+
+</body>
+</html>

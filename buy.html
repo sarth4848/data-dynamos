@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy Ramsung Flex 27 Ultra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    #chatbot {
+      transition: all 0.3s ease-in-out;
+    }
+    .typing::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+  <script>
+    function autoFillCity() {
+      const pinCode = document.getElementById("pincode").value;
+      const cityInput = document.getElementById("city");
+      const pinToCity = {
+        "400001": "Mumbai",
+        "110001": "New Delhi",
+        "560001": "Bangalore",
+        "600001": "Chennai",
+        "700001": "Kolkata"
+      };
+      cityInput.value = pinToCity[pinCode] || "";
+    }
+
+    function confirmPurchase(event) {
+      event.preventDefault();
+      document.getElementById("modal").classList.remove("hidden");
+    }
+
+    function proceedToSuccess() {
+      window.location.href = "success.html";
+    }
+
+    function toggleChatbot() {
+      const bot = document.getElementById('chatbot');
+      bot.classList.toggle('opacity-0');
+      bot.classList.toggle('translate-y-5');
+      bot.classList.toggle('pointer-events-none');
+    }
+
+    function typeResponse(text, targetId) {
+      const el = document.getElementById(targetId);
+      el.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        el.textContent = text.substring(0, i);
+        i++;
+        if (i > text.length) {
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chatInput').value.toLowerCase();
+      const response = document.getElementById('chatResponse');
+      if (!input.trim()) {
+        typeResponse("Please enter a question!", "chatResponse");
+        return;
+      }
+      if (input.includes("price")) {
+        typeResponse("The Ramsung Flex 27 Ultra starts at ₹1,99,999.", "chatResponse");
+      } else if (input.includes("battery")) {
+        typeResponse("It features a 7000mAh intelligent dual-cell battery.", "chatResponse");
+      } else if (input.includes("buy")) {
+        typeResponse("You're already on the Buy page! Just fill in your details and proceed.", "chatResponse");
+      } else if (input.includes("flexbot")) {
+        typeResponse("I'm FlexBot, your smart AI companion built into the Ramsung Flex 27 Ultra.", "chatResponse");
+      } else if (input.includes("features") || input.includes("specs")) {
+        typeResponse("The device features a foldable 27\" 8K AMOLED, FlexCore X9 processor, AI tools, and more!", "chatResponse");
+      } else {
+        typeResponse("I'm FlexBot 🤖 – here to help with anything about the Ramsung Flex 27 Ultra!", "chatResponse");
+      }
+    }
+
+    window.onload = () => {
+      AOS.init();
+    };
+  </script>
+</head>
+<body class="bg-gradient-to-br from-gray-950 to-gray-900 text-white font-sans">
+  <div class="max-w-3xl mx-auto py-16 px-6">
+    <h1 class="text-5xl font-extrabold text-center mb-12 text-cyan-400 tracking-tight" data-aos="fade-down">Secure Your Ramsung Flex 27 Ultra</h1>
+
+    <form class="space-y-8 bg-gray-800/30 p-8 rounded-xl shadow-2xl backdrop-blur border border-gray-700" onsubmit="confirmPurchase(event)" data-aos="fade-up">
+      <div>
+        <label class="block text-sm mb-1 font-medium">Select Model</label>
+        <select class="w-full p-3 rounded bg-gray-900 border border-gray-700">
+          <option>256GB - Phantom Black</option>
+          <option>512GB - Silver Aurora</option>
+          <option>1TB - Flex Gold Limited</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm mb-2 font-medium">Shipping Address</label>
+        <input type="text" placeholder="Street Address" class="w-full p-3 mb-3 rounded bg-gray-900 border border-gray-700" />
+        <input type="text" placeholder="State" class="w-full p-3 mb-3 rounded bg-gray-900 border border-gray-700" />
+        <input type="text" id="pincode" oninput="autoFillCity()" placeholder="PIN Code" class="w-full p-3 mb-3 rounded bg-gray-900 border border-gray-700" />
+        <input type="text" id="city" placeholder="City (auto-filled)" class="w-full p-3 rounded bg-gray-700 text-gray-300 border border-gray-600" readonly />
+      </div>
+
+      <div>
+        <label class="block text-sm mb-2 font-medium">Payment Method</label>
+        <select class="w-full p-3 mb-3 rounded bg-gray-900 border border-gray-700">
+          <option>Credit/Debit Card</option>
+          <option>UPI</option>
+          <option>Net Banking</option>
+          <option>EMI Options</option>
+        </select>
+        <div class="mt-6 bg-gray-900 p-4 rounded-xl border border-gray-700 text-center">
+          <p class="text-sm text-gray-400 mb-2">Or scan to pay securely</p>
+          <img src="1.jpg" alt="Scan QR to Pay" class="w-48 mx-auto rounded-lg border border-gray-600" />
+        </div>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold rounded-xl hover:scale-105 hover:shadow-lg transition transform duration-300">
+        <i class="fas fa-lock mr-2"></i> Confirm Secure Purchase
+      </button>
+    </form>
+
+    <div class="mt-8 text-center text-sm text-gray-500">
+      <i class="fas fa-shield-alt mr-1"></i> 100% Secure Payment & Buyer Protection Guaranteed
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-900 rounded-xl p-8 text-center border border-gray-700 w-96 shadow-2xl">
+      <h2 class="text-2xl font-bold text-cyan-400 mb-4">Thank you for your order!</h2>
+      <p class="text-gray-300 mb-6">Your purchase has been processed successfully. Redirecting you to your invoice...</p>
+      <button onclick="proceedToSuccess()" class="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-2 px-6 rounded-full transition">View Invoice</button>
+    </div>
+  </div>
+
+  <!-- FlexBot Chatbot -->
+  <div id="chatbot" class="fixed bottom-24 right-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-4 rounded-2xl shadow-2xl max-w-xs w-80 z-50 opacity-0 translate-y-5 pointer-events-none">
+    <div class="flex justify-between items-center mb-2">
+      <h3 class="text-lg font-semibold flex items-center gap-2"><span class="text-cyan-400">🤖 FlexBot</span></h3>
+      <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white">✕</button>
+    </div>
+    <div class="text-xs text-gray-400 mb-2">Ask about price, specs, delivery, or anything Ramsung!</div>
+    <textarea id="chatInput" placeholder="Type your question here..." rows="2" class="w-full p-2 rounded bg-gray-800 border border-gray-700 text-sm resize-none"></textarea>
+    <button onclick="sendChat()" class="mt-2 w-full bg-cyan-500 hover:bg-cyan-600 transition py-2 rounded text-black font-bold">Send</button>
+    <div id="chatResponse" class="mt-3 text-sm text-cyan-300 min-h-[2rem] bg-gray-800 p-2 rounded"></div>
+  </div>
+  <button id="chatToggle" onclick="toggleChatbot()" class="fixed bottom-5 right-6 bg-cyan-500 hover:bg-cyan-600 text-black font-bold p-4 rounded-full shadow-xl z-50 animate-bounce">💬</button>
+
+</body>
+</html>
